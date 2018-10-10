@@ -83,6 +83,15 @@ p {
    color: gray;
 }
 
+.double-header {
+   border-bottom: 3px double #c99700;
+   border-top: none;
+}
+
+.nd-gold {
+   color: #C99700 !important;
+}
+
 #nd-header {
    background-color: #002a5d !important;
    min-height: 50px;
