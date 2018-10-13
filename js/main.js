@@ -1,94 +1,114 @@
 $(document).ready(function() {
 
+         // Clear the form button
+         $("#clear-form").on("click", function() {
+            window.location.reload(true);
+         });
 
-   $("#clear-form").on("click", function() {
-      window.location.reload(true);
-   });
+         // Popup alert to contact Randy or Trudie before working on certain guides
+         $("#author-dropdown").on("change", function(){
+               if ($("#author-dropdown").val() == "hjuhn@nd.edu" || $("#author-dropdown").val() == "archlib@nd.edu" || $("#author-dropdown").val() == "hl-data-management-consulting-list@nd.edu" || $("#author-dropdown").val() == "cdshelpdesk@nd.edu") {
+                  $("#contact-product-owner").hide().removeClass("hidden").fadeIn();
+               } else {
+                  $("#contact-product-owner").fadeOut();
+               }
+            });
 
-   // var storageLength = localStorage.length;
+            $("#refresh-title").on("click", function() {
+               $("#guide-title").val("");
+            });
 
-   if (localStorage.length > 0) {
-      $("#number-students").html(localStorage.length);
-   }
+            // Open email to the guide author
+            $("#email-author").on("click", function() {
 
-   $("#email-student").on("click", function() {
+               var author = $('#author-dropdown option:selected').text();
+               var authorEmail = $('#author-dropdown option:selected').val();
 
-      var student = $('#student-dropdown option:selected').text();
-      var studentEmail = $('#student-dropdown option:selected').val();
+               // Parse author's first name
+               var authorFirstName = author.split(",");
 
-      // Get student first name
-      var studentFirstName = student.split(",");
+               // Variables
+               var guideTitle = $("#guide-title").val();
+               var guideType = "";
+               var guideTemplate = "";
+               var guideName = "";
+               var friendlyURLPages = "";
+               var friendlyURLGuide = "";
+               var associatedSubjects = "";
+               var fiveTags = "";
+               var profileAllPages = "";
+               var noBelowProfile = "";
+               var noBlankPages = "";
 
-      var length = $('input[name=optradio1]:checked').val();
-      var engaged = $('input[name=optradio2]:checked').val();
-      var interesting = $('input[name=optradio3]:checked').val();
-      var heuristic = $('input[name=optradio4]:checked').val();
-      var comments = $("#comments").val();
-      var newline = "%0D%0A";
-      var outOfFive = " / 5";
+               var newline = "%0D%0A";
+               var comments = $("#comments").val();
 
-      var totalGrade = parseInt(length) + parseInt(engaged) + parseInt(interesting) + parseInt(heuristic);
+               // Message components
+               if ($("#guide-type").is(":checked")) {
+                  guideType ="Lorem" + newline + newline;
+               }
 
-      // Message components
-      var lengthDescription = "LENGTH" + newline + "Response meets/exceeds 200 words";
-      var engagedDescription = "ENGAGING WITH THE READINGS" + newline + "Evidence that students read/viewed the material , w/ clear reference (quoting/paraphrasing) of assigned readings and viewings";
-      var interestingDescription = "SAYING INTERESTING AND USEFUL THINGS" + newline + "Saying something interesting and useful by relating topics to personal experiences, connections to other courses, or prior knowledge of the topic";
-      var heuristicDescription = "THINKING YOURSELF INTO SENSE" + newline + "Rather than “performing studenting,” the writer used the assignment as a tool to think himself or herself into sense";
+               if ($("#guide-template").is(":checked")) {
+                  guideTemplate ="Lorem" + newline + newline;
+               }
 
-      // Final Message
-      var emailMessage = "Hi" + studentFirstName[1] + "," + newline + "Below, I've added the assessment for your weekly writing assignment. As always, if you have any questions, don't hesitate to email me or chat with me after class." + newline + newline + lengthDescription + newline + length + outOfFive + newline + newline + engagedDescription + newline + engaged + outOfFive + newline + newline + interestingDescription + newline + interesting + outOfFive + newline + newline + heuristicDescription + newline + heuristic + outOfFive + newline +
-         newline + "Total Points: " + totalGrade + newline + newline + "COMMENTS" + newline + comments;
+               if ($("#guide-name").is(":checked")) {
+                  guideName ="Lorem" + newline + newline;
+               }
 
-      var openEmail = "mailto:" + studentEmail + "?subject=Weekly Writing Assessment" + "&body=" + emailMessage;
+               if ($("#friendly-url-pages").is(":checked")) {
+                  friendlyURLPages ="Lorem" + newline + newline;
+               }
 
-      localStorage.setItem(student, totalGrade);
+               if ($("#friendly-url-guide").is(":checked")) {
+                  friendlyURLGuide ="Lorem" + newline + newline;
+               }
 
-      $("#number-students").html(localStorage.length);
+               if ($("#associated-subjects").is(":checked")) {
+                  associatedSubjects ="Lorem" + newline + newline;
+               }
 
-      window.location.href = openEmail;
+               if ($("#five-tags").is(":checked")) {
+                  fiveTags ="Lorem" + newline + newline;
+               }
 
-   });
+               if ($("#profile-all-pages").is(":checked")) {
+                  profileAllPages ="Lorem" + newline + newline;
+               }
 
-   $("#show-all-students").on("click", function() {
+               if ($("#no-below-profile").is(":checked")) {
+                  noBelowProfile ="Lorem" + newline + newline;
+               }
 
-      var roster = "";
-      var key = 0;
-      var value = '';
-      var concat = '';
+               if ($("#blank-pages").is(":checked")) {
+                  noBlankPages ="Lorem" + newline + newline;
+               }
 
-      for (var i = 0; i < localStorage.length; i++) {
-         key = localStorage.key(i);
-         value = localStorage.getItem(key);
-         concat += key + ": " + value + "<br>";
-      }
-
-      $("#student-grades-modal").modal("show");
-      $("#student-grades-modal .modal-body").html(concat);
-
-   });
-
-   // Remove all students from localstorage
-   $("#erase-local-storage").on("click", function() {
-      localStorage.clear();
-      $("#number-students").html("");
-      alert("Session Roster Cleared!");
-      $("#purge-reminder").fadeOut();
-
-   });
-
-   // Tooltips
-   $('[data-toggle="tooltip"]').tooltip();
-
-
-   // Calculate and write total on click of each radio button
-   $("input[type=radio]").click(function() {
-      var total = 0;
-      $("input[type=radio]:checked").each(function() {
-         total += parseFloat($(this).val());
-      });
-      $("#totalpoints").html(total);
-   });
+               if (comments !== "") {
+                  comments = "Additional Comments:" + newline + comments + newline + newline;
+               }
 
 
-});
-// document.ready closes
+
+               // Final Message
+               var emailMessage = "Hi" + authorFirstName[1] + "," + newline + "Below, please find the list of recent changes to your guide:" + newline + guideTitle + newline + newline + "The LibGuides Management Team (LMT) has made these changes as part of our continuing review of guides in which we aim to ensure that all guides meet the minimum requirements for publication. Each change is described in detail below:" + newline + newline + guideTemplate + guideName + guideType + friendlyURLGuide + associatedSubjects + fiveTags + profileAllPages + noBelowProfile + noBlankPages + comments + newline + newline + "As always, if you have any questions or concerns, or would like additional training on or assistance with your guides, email the LMT at:" + newline + newline + "lmt-list@nd.edu " + newline;
+
+               var openEmail = "mailto:" + authorEmail + "?subject=Weekly Writing Assessment" + "&body=" + emailMessage;
+
+               // Open the email in new window or client
+               window.location.href = openEmail;
+
+            });
+
+
+            // // Tooltips
+            $('[data-toggle="tooltip"]').tooltip();
+
+            // Popovers for the information icons -- this allows multiple popovers per page
+            $('[data-toggle="popover"]').popover({
+               'container': 'body',
+               "animation": true
+            });
+
+         });
+      // document.ready closes

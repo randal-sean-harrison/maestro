@@ -67,6 +67,30 @@ p {
    margin: 0 0 1rem 0;
 }
 
+/* Turns off unerline on hover for the infomation icons */
+a[data-toggle="popover"] {
+   text-decoration: none !important;
+}
+
+.to-enlarge {
+   background: white;
+   padding: .4rem;
+   border-radius: 0 0 10px 10px;
+   display: inline-block;
+   margin-top: -2px;
+   border-right: 1px solid #ddd;
+   border-bottom: 1px solid #ddd;
+   border-left: 1px solid #ddd;
+   margin-left: 25%;
+}
+
+.short-round {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color: #FFFFFF !important;
+}
+
 .push-down-1 {
    margin-top: 1rem;
 }
@@ -79,8 +103,12 @@ p {
    margin-top: 3rem;
 }
 
+.push-down-4 {
+   margin-top: 4rem;
+}
+
 .grey {
-   color: gray;
+   color: gray !important;
 }
 
 .double-header {
@@ -116,6 +144,15 @@ p {
    padding-top: .75rem !important;
 }
 
+.checkbox {
+   padding-left: 1rem;
+}
+
+.checkbox input[type=checkbox] {
+   margin-left: -2rem !important;
+   border-radius: 50 !important;
+}
+
 .descriptor {
    display:block;
    color: gray;
@@ -139,18 +176,8 @@ p {
 }
 
 hr {
-   border: .5px dashed lightgray;
-}
-
-.badge {
-   background-color: #337ab7;
-}
-
-#totalpoints {
-   /* background: white; */
-   padding: 8px 10px 3px;
-   /* border: 1px solid lightgray; */
-   font-size: 1.5rem !important;
+   border: .5px solid lightgrey;
+   margin-top: 1.5rem;
 }
 
 .alert-default {
@@ -162,19 +189,23 @@ hr {
    cursor: pointer;
 }
 
-/* Typeahead box */
-.custom-combobox {
-    position: relative;
-    display: inline-block;
-  }
-  .custom-combobox-toggle {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin-left: -1px;
-    padding: 0;
-  }
-  .custom-combobox-input {
-    margin: 0;
-    padding: 5px 10px;
-  }
+/* Adds padding around the content inside each tab panel */
+.tab-pane {
+   padding: 1rem;
+   border-top: none;
+}
+
+li.active a {
+   font-weight: bold !important;
+}
+
+.tab-content {
+   background: white;
+   border: 1px solid #DDD;
+}
+
+.nav-tabs li a,
+.nav-tabs li a {
+   border-bottom: none !important;
+   margin-bottom: -2px;
+}
