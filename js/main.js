@@ -51,7 +51,7 @@ $(document).ready(function() {
                }
 
                if ($("#guide-template").is(":checked")) {
-                  guideTemplate = checkmark + "GUIDE TEMPLATE -- We have selected the appropriate guide template for your guide. This will ensure that future changes to that template will propagate to your guide." + newline + newline;
+                  guideTemplate = checkmark + "GUIDE TEMPLATE -- We have selected the appropriate template for your guide. This will ensure that future changes to that template will propagate to your guide." + newline + newline;
                }
 
                if ($("#guide-name").is(":checked")) {
@@ -91,7 +91,7 @@ $(document).ready(function() {
                }
 
                // Final Message
-               var emailMessage = "Hi" + authorFirstName[1] + "," + newline + "Below, please find the list of recent changes to your guide: " + "\"" + guideTitle + ".\" " +  "The LibGuides Management Team (LMT) has made changes to this guide as part of our continuing review of guides in which we aim to ensure that all guides meet the minimum requirements for publication. Each change is described in detail below:" + newline + newline + guideTemplate + guideName + guideType + friendlyURLGuide + friendlyURLPages + associatedSubjects + fiveTags + profileAllPages + noBelowProfile + noBlankPages + comments + newline + "As always, if you have any questions or concerns, or would like additional training on or assistance with your guides, email the LMT at lmt-list@nd.edu, or simply reply to this email.";
+               var emailMessage = "Hi" + authorFirstName[1] + "," + newline + "Below, please find the list of recent changes to your guide: " + "\"" + guideTitle + "\". " +  "The LibGuides Management Team (LMT) has made changes to this guide as part of our continuing review of guides in which we aim to ensure that all guides meet the minimum requirements for publication. Each change is described in detail below:" + newline + newline + guideTemplate + guideName + guideType + friendlyURLGuide + friendlyURLPages + associatedSubjects + fiveTags + profileAllPages + noBelowProfile + noBlankPages + comments + "As always, if you have any questions or concerns, or would like additional training on or assistance with your guides, email the LMT at lmt-list@nd.edu, or simply reply to this email.";
 
                var openEmail = "mailto:" + authorEmail + "?subject=Changes to your Library Guide&reply-to=lmt-list@nd.edu&cc=maestro-list@nd.edu" + "&body=" + emailMessage;
 
