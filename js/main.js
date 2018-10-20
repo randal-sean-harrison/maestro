@@ -71,11 +71,11 @@ $(document).ready(function() {
                }
 
                if ($("#five-tags").is(":checked")) {
-                  fiveTags = checkmark + "FIVE (5) TAGS -- We have ensured your guide is limited up to 5 tags. Associating your guide with a limited set of tags increases its findability when users search by tag." + newline + newline;
+                  fiveTags = checkmark + "FIVE (5) TAGS -- We have ensured your guide is limited to approximately 5 tags. Associating your guide with a limited set of tags increases its findability when users search by tag." + newline + newline;
                }
 
                if ($("#profile-all-pages").is(":checked")) {
-                  profileAllPages = checkmark + "PROFILE BOX -- We have added a profile box on 1 or more of your pages. A luminous point of contact consistently placed on each page helps users get needed assistance." + newline + newline;
+                  profileAllPages = checkmark + "PROFILE BOX -- We have added a profile box on 1 or more of your pages. A luminous point of contact consistently placed on each page helps users get needed assistance and establishes you as the Library's expert in this area." + newline + newline;
                }
 
                if ($("#no-below-profile").is(":checked")) {
